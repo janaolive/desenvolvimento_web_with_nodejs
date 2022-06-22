@@ -1,10 +1,10 @@
 const validateToken = (req, res, next) => {
-  const token = req.headers.authorization;
+  const { authorization } = req.headers;
   
-  if (!token) {
+  if (!authorization) {
     return res.status(401).json({ message: 'Token não encontrado' });
   }
-  if (token.length < 16) {
+  if (authorization.length < 16) {
     return res.status(401).json({ message: 'Token inválido' });
   }
   

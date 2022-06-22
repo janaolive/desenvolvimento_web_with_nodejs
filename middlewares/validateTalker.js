@@ -29,7 +29,7 @@ const validateTalk = (req, res, next) => {
 
   if (!talk || talk === '') {
     return res.status(400).json({ message:
-      'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios' });
+      'O campo "talk" é obrigatório' });
   }
 
   next();
@@ -42,12 +42,12 @@ const validateWatchedAt = (req, res, next) => {
  
   if (!watchedAt || watchedAt === '') {
     return res.status(400).json({ message:
-      'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios' });
+      'O campo "talk" é obrigatório' });
   }
   
   if (dateRegex.test(watchedAt) === false) {
     return res.status(400).json({ message:
-      'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"' });
+      'O campo "watchedAt" é obrigatório' });
   }
   
   next();
