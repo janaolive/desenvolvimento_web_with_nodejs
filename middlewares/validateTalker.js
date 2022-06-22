@@ -1,5 +1,3 @@
-const validateToken = require('./validateToken');
-
 const validateName = async (req, res, next) => {
   const { name } = req.body;
     
@@ -72,13 +70,12 @@ const validateRate = async (req, res, next) => {
   next();
 };
 
-const setNewTalker = {
-validateToken,
-validateName,
-validateAge,
-validateTalk,
-validateWatchedAt,
-validateRate,
-};
+const setNewTalker = [
+  validateName,
+  validateAge,
+  validateTalk,
+  validateWatchedAt,
+  validateRate,
+];
 
 module.exports = setNewTalker;

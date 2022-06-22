@@ -29,7 +29,7 @@ app.get('/talker/:id', getTalkerById);
 app.get('/talker', getAllTalkers);
 
 app.post('/login', validateEmail, validatePassword, generateToken);
-app.post('/talker', setNewTalker, createTalker);
+app.post('/talker', validateToken, setNewTalker, createTalker);
 
 app.put('./talker/:id', setNewTalker, editTalker);
 
