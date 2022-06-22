@@ -4,7 +4,11 @@ const bodyParser = require('body-parser');
 const { validateEmail, validatePassword } = require('./middlewares/validateLogin');
 const generateToken = require('./middlewares/generateToken');
 const validateToken = require('./middlewares/validateToken');
-const setNewTalker = require('./middlewares/validateTalker');
+const { validateName,
+  validateAge,
+  validateTalk,
+  validateWatchedAt,
+  validateRate } = require('./middlewares/validateTalker');
 
 const getAllTalkers = require('./talkers/getAllTalkers');
 const getTalkerById = require('./talkers/getTalkerById');
@@ -29,9 +33,11 @@ app.get('/talker/:id', getTalkerById);
 app.get('/talker', getAllTalkers);
 
 app.post('/login', validateEmail, validatePassword, generateToken);
-app.post('/talker', validateToken, setNewTalker, createTalker);
+app.post('/talker', validateToken, validateName, validateAge, validateTalk,
+  validateWatchedAt, validateRate, createTalker);
 
-app.put('./talker/:id', setNewTalker, editTalker);
+app.put('./talker/:id', validateName, validateAge, validateTalk,
+  validateWatchedAt, validateRate, editTalker);
 
 app.delete('./talker/:id', validateToken, deleteTalker);
 

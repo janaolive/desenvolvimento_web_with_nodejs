@@ -70,12 +70,10 @@ const validateRate = async (req, res, next) => {
   next();
 };
 
-const setNewTalker = [
+module.exports = {
   validateName,
   validateAge,
   validateTalk,
   validateWatchedAt,
   validateRate,
-];
-
-module.exports = setNewTalker;
+};
