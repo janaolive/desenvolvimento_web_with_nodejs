@@ -14,7 +14,7 @@ const getAllTalkers = require('./talkers/getAllTalkers');
 const getTalkerById = require('./talkers/getTalkerById');
 const createTalker = require('./talkers/createTalker');
 const editTalker = require('./talkers/editTalker');
-const deleteTalker = require('./talkers/deleteTalker');
+// const deleteTalker = require('./talkers/deleteTalker');
 const searchTalker = require('./talkers/searchTalker');
 
 const app = express();
@@ -36,10 +36,10 @@ app.post('/login', validateEmail, validatePassword, generateToken);
 app.post('/talker', validateToken, validateName, validateAge, validateTalk,
   validateWatchedAt, validateRate, createTalker);
 
-app.put('./talker/:id', validateName, validateAge, validateTalk,
+app.put('/talker/:id', validateToken, validateName, validateAge, validateTalk,
   validateWatchedAt, validateRate, editTalker);
 
-app.delete('./talker/:id', validateToken, deleteTalker);
+// app.delete('./talker/:id', validateToken, deleteTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
